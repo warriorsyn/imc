@@ -20,32 +20,57 @@ public class ImcController {
 
         imcModel.altura = String.format("%.2f", altura).replace(".", ",");
         imcModel.peso = String.format("%.2f", peso).replace(".", ",");
-        imcModel.message = getImcMessage(imc);
-        imcModel.imc = Double.toString(imc);
+        imcModel.classification = getImcClassification(imc);
+        imcModel.risk = getImcRisk(imc);
+        imcModel.imc = String.format("%.2f", imc);
         return imcModel;
     }
 
-    private String getImcMessage(double imc) {
+    private String getImcClassification(double imc) {
         if (imc < 18.5) {
-            return "Abaixo do peso ideal, vamos melhorar!";
+            return "Abaixo do peso";
         }
 
         if (imc > 18.5 && imc < 24.9) {
-            return "Voce está no peso ideal, parabens!";
+            return "Peso ideal";
         }
 
         if (imc > 25.0 && imc < 29.9) {
-            return "Voce está com excesso de peso, vamos melhorar!";
+            return "Excesso de peso";
         }
 
         if (imc > 30 && imc < 34.9) {
-            return "Obesidade Classe I, cuidado!";
+            return "Obesidade grau 1";
         }
 
         if (imc > 35.0 && imc < 39.9) {
-            return "Obesidade Classe II, ainda temos como mudar isso!";
+            return "Obesidade grau 2";
         }
 
-        return "Obesidade Classe III, procure ajuda, nada está perdido!";
+        return "Obesidade grau 3";
+    }
+
+    private String getImcRisk(double imc) {
+        if (imc < 18.5) {
+            return "Elevado";
+        }
+
+        if (imc > 18.5 && imc < 24.9) {
+            return "Inexistente";
+        }
+
+        if (imc > 25.0 && imc < 29.9) {
+            return "Elevado";
+        }
+
+        if (imc > 30 && imc < 34.9) {
+            return "Muito elevado";
+        }
+
+        if (imc > 35.0 && imc < 39.9) {
+            return "Muitíssimo elevado";
+        }
+
+        return "Obesidade mórbida";
     }
 }

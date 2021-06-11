@@ -1,7 +1,9 @@
 package com.unit.imc.imc.model;
 
 public class Imc {
-    public String message;
+    public String classification;
+
+    public String risk;
 
     public String altura;
 
