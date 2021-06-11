@@ -14,9 +14,9 @@ public class ImcController {
 
     @GetMapping
     public Imc getAll(@RequestParam double altura, @RequestParam double peso) {
-        var imc = peso / (altura * 2);
+        double imc = peso / (altura * 2);
 
-        var imcModel = new Imc();
+        Imc imcModel = new Imc();
 
         imcModel.altura = String.format("%.2f", altura).replace(".", ",");
         imcModel.peso = String.format("%.2f", peso).replace(".", ",");
